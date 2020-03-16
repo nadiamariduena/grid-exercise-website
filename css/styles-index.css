@@ -1,0 +1,141 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Why does property specified under * selector work for some but no others?
+
+
+For some properties like color you would get the illusion of * applying to all elements including pseudos because they are properties that a child can inherit from its parent.
+*/
+
+:root {
+  font-size: 14px;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  /*
+  When i add the  overflow: hidden;
+  the bar dissapears but also when i try to reduce the 
+    grid-template-rows: repeat(9, 4.6rem);
+  height: 95vh; to 90vh of the #grid, nothing happens,its evident
+  that something is wrong because theres something moving.
+
+  */
+}
+
+header {
+  width: 100vw;
+  height: 5vh;
+  background-color: white;
+  padding: 0 20px 0 20px;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "MuliBold";
+  font-size: 1rem;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0 0 0 20px;
+  letter-spacing: 10px;
+  font-size: 1rem;
+}
+nav a {
+  text-decoration: none;
+  font-style: italic;
+  color: turquoise;
+}
+/* 
+
+IF I ADD THIS , the grid wont show up.
+
+#page {
+  display: flex;
+  flex-wrap: wrap;
+} 
+
+*/
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  /*
+I tried with vh ,with % and fractions filled the space 
+i couldnt fill with the others
+  */
+  height: 95vh;
+  grid-template-areas:
+    "box1 box1 box3 box3"
+    "box1 box1 box3 box3"
+    "box1 box1 box3 box3"
+    "box1 box1 box3 box3"
+    "box1 box1 box3 box3"
+    "box1 box1 box3 box3"
+    "box1 box1 box3 box3"
+    "box2 box2 box3 box3"
+    "box2 box2 box3 box3";
+
+  /* 
+    "box1 box1 box3 "
+    "box2 box2 box3"
+    "box4 box5 box5"
+    "box4 box6 box6"; */
+
+  background-color: transparent;
+
+  background-image: url(../img/ClaudiaAndujar-metalmagazine-10.jpg);
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: exclusion;
+}
+.grid-box1 {
+  background-color: #eee;
+  grid-area: box1;
+  font-size: 2.5rem;
+  line-height: 30px;
+  padding: 30px 50px 0 20px;
+}
+.grid-box2 {
+  background-color: #fff;
+  grid-area: box2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  font-family: "Poppins-light";
+  font-size: 0.8rem;
+}
+.grid-box3 {
+  background-color: transparent;
+  grid-area: box3;
+  mix-blend-mode: exclusion;
+
+  background-image: url(../img/James-Turrell-metalmagazine-5.jpg);
+  background-position: center right;
+  background-size: 160%;
+  background-repeat: no-repeat;
+  transition: 2s;
+}
+.grid-box3:hover {
+  background-size: 80%;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+/* .grid-box4 {
+  background-color: rgb(255, 0, 191);
+  grid-area: box4;
+} */

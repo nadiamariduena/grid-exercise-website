@@ -1,0 +1,130 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Why does property specified under * selector work for some but no others?
+
+
+For some properties like color you would get the illusion of * applying to all elements including pseudos because they are properties that a child can inherit from its parent.
+*/
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* 
+
+IF I ADD THIS , the grid wont show up.
+
+#page {
+  display: flex;
+  flex-wrap: wrap;
+} ************------*****************/
+
+/* ------------------------- */
+/* -------------1------------ */
+#parent-top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: 250px 3rem 1fr; */
+  grid-template-rows: repeat(2, 5rem);
+  height: 40vh;
+  background-color: #f3f3f3;
+}
+
+.prnt-top-box1 {
+  background-color: #f0f;
+}
+.prnt-top-box2 {
+  background-color: orangered;
+}
+.prnt-top-box3 {
+  background-color: blue;
+}
+/* ------------------------- */
+/* -------------2------------ */
+
+#parent-middle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: 250px 3rem 1fr; */
+  grid-template-rows: repeat(3, 5rem);
+  height: 70vh;
+  background-color: #f3f3f3;
+  margin: 30px 0 0 0;
+}
+
+.prnt-middle-box1 {
+  background-color: goldenrod;
+}
+.prnt-middle-box2 {
+  background-color: pink;
+}
+.prnt-middle-box3 {
+  background-color: red;
+  grid-column-start: 1; /*here i will define where the column will start*/
+  grid-column-end: 3;
+  grid-row-start: 2;
+}
+.prnt-middle-box4 {
+  background-color: purple;
+  grid-column-start: 1; /*here i will define where the column will start*/
+  grid-column-end: 3;
+  grid-row-start: 3;
+}
+/* ------------------------- */
+/* -------------3------------ */
+
+#parent-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 5rem);
+  height: 70vh;
+  grid-template-areas:
+    "box1 box1 box3"
+    "box2 box2 box3"
+    "box4 box5 box5"
+    "box4 box6 box6";
+  background-color: white;
+
+  /* THE below gaps, makes the gap between the boxes */
+  row-gap: 2rem;
+  column-gap: 3rem;
+  margin: 20px 0;
+  padding-top: 5px;
+  border-top: 1px solid #000;
+}
+
+/* -------- */
+.prnt-bottom-box1 {
+  background-color: goldenrod;
+  grid-area: box1;
+}
+.prnt-bottom-box2 {
+  background-color: pink;
+  grid-area: box2;
+}
+.prnt-bottom-box3 {
+  background-color: red;
+  grid-area: box3;
+}
+.prnt-bottom-box4 {
+  background-color: purple;
+  grid-area: box4;
+}
+.prnt-bottom-box5 {
+  background-color: cadetblue;
+  grid-area: box5;
+}
+.prnt-bottom-box6 {
+  background-color: olive;
+  grid-area: box6;
+}
+
+/* Should i add a height auto if i create large boxes?, because it
+cause some trouble with the little ones in large quantities */
